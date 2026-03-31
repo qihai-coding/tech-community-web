@@ -33,18 +33,18 @@
     <div class="output-content">
       <div v-if="activeTab === 'output'" class="output-text">
         <pre v-if="output">{{ output }}</pre>
-        <div v-else class="placeholder">运行代码后将在此处显示输出结果</div>
+        <div v-else class="placeholder">{{ outputPlaceholder }}</div>
       </div>
       <div v-else class="error-text">
         <pre v-if="error" class="error-content">{{ error }}</pre>
-        <div v-else class="placeholder">无错误信息</div>
+        <div v-else class="placeholder">{{ errorPlaceholder }}</div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 
 interface Props {
   output?: string
@@ -74,6 +74,45 @@ const statusText = computed(() => {
       return '未知'
   }
 })
+
+const outputPlaceholder = computed(() => {
+  if (props.executionTime === null) {
+    return '运行代码后将在此处显示输出结果'
+  }
+
+  if (props.status === 'error' && props.error) {
+    return '本次执行没有标准输出，请查看“错误”标签'
+  }
+
+  if (props.status === 'timeout') {
+    return '程序执行超时，没有可显示的标准输出'
+  }
+
+  return '程序执行完成，但没有标准输出'
+})
+
+const errorPlaceholder = computed(() => {
+  if (props.executionTime === null || props.status === 'success') {
+    return '无错误信息'
+  }
+
+  return '未返回错误详情'
+})
+
+watch(
+  () => [props.error, props.output, props.status] as const,
+  ([error, output, status]) => {
+    if (error && status !== 'success') {
+      activeTab.value = 'error'
+      return
+    }
+
+    if (output || status === 'success') {
+      activeTab.value = 'output'
+    }
+  },
+  { immediate: true }
+)
 </script>
 
 <style scoped>
