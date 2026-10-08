@@ -1,10 +1,10 @@
-简体中文 · [English（英文）](README.en.md) · [后端仓库](https://github.com/qihai-coding/shequ_gin)
+简体中文 · [English（英文）](README.en.md) · [后端仓库](https://github.com/qihai-coding/tech-community-api)
 
-# Shequ · 技术交流社区
+# Tech Community · 技术交流社区
 
-![Shequ 技术交流社区前端：文章、实时聊天、私信、资源分享、在线编程与社区统计的功能示意](docs/assets/cover.png)
+![Tech Community 技术交流社区前端：文章、实时聊天、私信、资源分享、在线编程与社区统计的功能示意](docs/assets/cover.png)
 
-面向技术交流的社区前端，将内容发布、即时交流、资源分享和在线编程整合在同一个应用中。配合 [shequ_gin 后端](https://github.com/qihai-coding/shequ_gin)运行，提供普通用户与管理员各自的页面入口。
+面向技术交流的社区前端，将内容发布、即时交流、资源分享和在线编程整合在同一个应用中。配合 [tech-community-api 后端](https://github.com/qihai-coding/tech-community-api)运行，提供普通用户与管理员各自的页面入口。
 
 [功能概览](#功能概览) · [系统架构](#系统架构) · [快速开始](#快速开始) · [开发与构建](#开发与构建) · [运行说明](#运行说明)
 
@@ -34,8 +34,8 @@
 
 ```mermaid
 flowchart LR
-    Browser["浏览器"] --> Frontend["shequ · Vue 3 前端"]
-    Frontend -->|"HTTP 请求 / WebSocket 实时通信"| Backend["shequ_gin · Go 后端"]
+    Browser["浏览器"] --> Frontend["tech-community-web · Vue 3 前端"]
+    Frontend -->|"HTTP 请求 / WebSocket 实时通信"| Backend["tech-community-api · Go 后端"]
     Backend --> DB["MySQL · 关系型数据库"]
     Backend --> Storage["MinIO · 对象存储"]
     Backend --> Runner["Judge0 · 代码执行服务"]
@@ -48,13 +48,13 @@ flowchart LR
 ### 1. 准备环境
 
 - 推荐 Node.js（脚本运行环境）**22.12 或更高版本**，以及随附的 npm（依赖管理工具）。锁文件中的 Vite 7 实际要求 `^20.19.0 || >=22.12.0`；项目声明的 Node.js 18 下限不足以满足该依赖。
-- 按[后端启动说明](https://github.com/qihai-coding/shequ_gin#快速开始)准备后端，默认地址为 `http://localhost:3001`。
+- 按[后端启动说明](https://github.com/qihai-coding/tech-community-api#快速开始)准备后端，默认地址为 `http://localhost:3001`。
 
 ### 2. 安装与配置
 
 ```sh
-git clone https://github.com/qihai-coding/shequ.git
-cd shequ
+git clone https://github.com/qihai-coding/tech-community-web.git
+cd tech-community-web
 npm ci
 ```
 
@@ -127,6 +127,6 @@ docs/assets/     仓库展示封面与可编辑矢量源图
 
 ## 反馈与许可
 
-问题与改进建议请提交至 [Issues（问题反馈）](https://github.com/qihai-coding/shequ/issues)，附上复现步骤、运行环境和已移除敏感信息的日志。
+问题与改进建议请提交至 [Issues（问题反馈）](https://github.com/qihai-coding/tech-community-web/issues)，附上复现步骤、运行环境和已移除敏感信息的日志。
 
 本项目采用 [MIT（宽松开源许可证）](LICENSE)，版权归属为 `2026 qihai-coding`。第三方依赖仍遵循各自许可证。

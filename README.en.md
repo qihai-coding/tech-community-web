@@ -1,10 +1,10 @@
-[简体中文（Chinese）](README.md) · English · [Backend repository](https://github.com/qihai-coding/shequ_gin)
+[简体中文（Chinese）](README.md) · English · [Backend repository](https://github.com/qihai-coding/tech-community-api)
 
-# Shequ · Technical Community
+# Tech Community · Web Application
 
-![Shequ frontend feature overview: articles, live chat, private messages, resources, online coding and community insights](docs/assets/cover.png)
+![Tech Community frontend feature overview: articles, live chat, private messages, resources, online coding and community insights](docs/assets/cover.png)
 
-A community frontend for technical writing, conversations, resource sharing and online coding. It works with the [shequ_gin backend](https://github.com/qihai-coding/shequ_gin) and provides separate page access for members and administrators.
+A community frontend for technical writing, conversations, resource sharing and online coding. It works with the [tech-community-api backend](https://github.com/qihai-coding/tech-community-api) and provides separate page access for members and administrators.
 
 [Features](#features) · [Architecture](#architecture) · [Quick start](#quick-start) · [Development](#development) · [Runtime notes](#runtime-notes)
 
@@ -34,8 +34,8 @@ See [package.json](package.json) and [package-lock.json](package-lock.json) for 
 
 ```mermaid
 flowchart LR
-    Browser["Browser"] --> Frontend["shequ · Vue 3 frontend"]
-    Frontend -->|"HTTP / WebSocket"| Backend["shequ_gin · Go backend"]
+    Browser["Browser"] --> Frontend["tech-community-web · Vue 3 frontend"]
+    Frontend -->|"HTTP / WebSocket"| Backend["tech-community-api · Go backend"]
     Backend --> DB["MySQL · Database"]
     Backend --> Storage["MinIO · Object storage"]
     Backend --> Runner["Judge0 · Code execution"]
@@ -48,13 +48,13 @@ This repository implements the interface and interactions. The backend handles d
 ### 1. Prerequisites
 
 - **Node.js 22.12 or later** with its bundled npm is recommended. The locked Vite 7 dependency requires `^20.19.0 || >=22.12.0`; the project's declared Node.js 18 minimum does not satisfy that dependency.
-- Prepare the backend using its [setup instructions](https://github.com/qihai-coding/shequ_gin/blob/master/README.en.md#quick-start). Its default address is `http://localhost:3001`.
+- Prepare the backend using its [setup instructions](https://github.com/qihai-coding/tech-community-api/blob/master/README.en.md#quick-start). Its default address is `http://localhost:3001`.
 
 ### 2. Install and configure
 
 ```sh
-git clone https://github.com/qihai-coding/shequ.git
-cd shequ
+git clone https://github.com/qihai-coding/tech-community-web.git
+cd tech-community-web
 npm ci
 ```
 
@@ -127,6 +127,6 @@ docs/assets/     Repository cover and editable vector source
 
 ## Feedback and license
 
-Report problems or suggest improvements through [Issues](https://github.com/qihai-coding/shequ/issues), including reproduction steps, your environment and sanitized logs.
+Report problems or suggest improvements through [Issues](https://github.com/qihai-coding/tech-community-web/issues), including reproduction steps, your environment and sanitized logs.
 
 Licensed under the [MIT License](LICENSE). Copyright `2026 qihai-coding`. Third-party dependencies retain their own licenses.
